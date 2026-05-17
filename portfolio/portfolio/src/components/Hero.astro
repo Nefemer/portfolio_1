@@ -1,0 +1,146 @@
+---
+import { personal } from '../data/portfolio';
+---
+
+<section class="hero" id="sobre-mi">
+  <div class="hero__inner">
+
+    <div class="hero__text">
+      {personal.available && (
+        <span class="hero__badge">disponible para trabajar</span>
+      )}
+      <h1 class="hero__title">
+        Hola, soy<br />
+        <span class="hero__name">{personal.name}</span>
+      </h1>
+      <p class="hero__role">{personal.role}</p>
+      <p class="hero__bio">{personal.bio}</p>
+
+      <div class="hero__actions">
+        <a href="#proyectos" class="btn btn--primary">ver proyectos</a>
+        {personal.cvUrl && (
+          <a href={personal.cvUrl} download class="btn btn--secondary">
+            descargar CV
+          </a>
+        )}
+      </div>
+    </div>
+
+    <div class="hero__photo-wrap">
+      <img
+        src="/perfil.jpg.PNG"
+        alt={`Foto de ${personal.name}`}
+        class="hero__photo"
+        width="92"
+        height="92"
+      />
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .hero {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 64px 24px 48px;
+  }
+
+  .hero__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .hero__text {
+    flex: 1;
+  }
+
+  .hero__badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    background-color: var(--color-success-bg);
+    color: var(--color-success-text);
+    border-radius: var(--radius-full);
+    padding: 4px 12px;
+    margin-bottom: 20px;
+  }
+
+  .hero__title {
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -1.5px;
+    margin-bottom: 4px;
+  }
+
+  .hero__name {
+    color: var(--color-accent);
+  }
+
+  .hero__role {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    margin-bottom: 16px;
+    margin-top: 8px;
+  }
+
+  .hero__bio {
+    font-size: 15px;
+    color: var(--color-text-muted);
+    max-width: 480px;
+    margin-bottom: 28px;
+    line-height: 1.7;
+  }
+
+  .hero__actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .hero__photo-wrap {
+    flex-shrink: 0;
+  }
+
+  .hero__photo {
+    width: 156px;
+    height: 156px;
+    border-radius: 50%;       /* hace el círculo */
+    object-fit: cover;        /* recorta sin deformar */
+    border: 0.5px solid var(--color-border);
+  }
+
+  .btn {
+    display: inline-block;
+    font-size: 13px;
+    padding: 9px 20px;
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    transition: opacity 0.15s, transform 0.1s;
+  }
+
+  .btn:hover { opacity: 0.85; }
+  .btn:active { transform: scale(0.98); }
+
+  .btn--primary {
+    background-color: var(--color-text);
+    color: var(--color-bg);
+  }
+
+  .btn--secondary {
+    background-color: transparent;
+    color: var(--color-text);
+    border: 0.5px solid var(--color-border-hover);
+  }
+
+  @media (max-width: 480px) {
+    .hero__inner {
+      flex-direction: column-reverse;
+      align-items: flex-start;
+    }
+  }
+</style>

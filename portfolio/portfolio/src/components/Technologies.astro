@@ -1,0 +1,77 @@
+---
+// src/components/Technologies.astro
+import { technologies } from '../data/portfolio';
+
+// Las primeras 2 tecnologías se muestran destacadas (las principales)
+const highlighted = technologies.slice(0, 2);
+const rest = technologies.slice(2);
+---
+
+<section class="tech" id="tecnologias">
+  <div class="tech__inner">
+    <p class="section-label">tecnologías</p>
+
+    <div class="tech__grid">
+      {
+        highlighted.map((tech: string) => (
+          <span class="tech__pill tech__pill--highlight">{tech}</span>
+        ))
+      }
+      {
+        rest.map((tech: string) => (
+          <span class="tech__pill">{tech}</span>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .tech {
+   /* border-top: 0.5px solid var(--color-border);
+  
+*/
+  }
+.tech__inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 36px 24px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .tech__grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tech__pill {
+    font-size: 13px;
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+    border: 0.5px solid var(--color-border);
+    color: var(--color-text-muted);
+    background-color: rgba(124, 58, 237, 0.15);
+    transition: border-color 0.15s, color 0.15s;
+  }
+
+  .tech__pill:hover {
+    border-color: var(--color-border-hover);
+    color: var(--color-text);
+  }
+
+  .tech__pill--highlight {
+    background-color: var(--color-accent-bg);
+    color: var(--color-accent-text);
+    border-color: transparent;
+    font-weight: 500;
+  }
+</style>
